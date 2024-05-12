@@ -13,7 +13,7 @@ services:
       - --providers.docker
       - --log.level=ERROR
       - --certificatesresolvers.leresolver.acme.httpchallenge=true
-      - --certificatesresolvers.leresolver.acme.email=albertcruz@terra.com.br ## mudar
+      - --certificatesresolvers.leresolver.acme.email=albertcruz@terra.com.br
       - --certificatesresolvers.leresolver.acme.storage=./acme.json
       - --certificatesresolvers.leresolver.acme.httpchallenge.entrypoint=web
     ports:
@@ -27,7 +27,7 @@ services:
       - "traefik.http.routers.http-catchall.entrypoints=web"
       - "traefik.http.routers.http-catchall.middlewares=redirect-to-https"
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
-      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.techisystem.com.br`)" ## mudar
+      - "traefik.http.routers.traefik-dashboard.rule=Host(`traefik.techisystem.com.br`)"
       - "traefik.http.routers.traefik-dashboard.entrypoints=websecure"
       - "traefik.http.routers.traefik-dashboard.service=api@internal"
       - "traefik.http.routers.traefik-dashboard.tls.certresolver=leresolver"
@@ -44,14 +44,14 @@ services:
     labels:
       # Frontend
       - "traefik.enable=true"
-      - "traefik.http.routers.frontend.rule=Host(`portainer.techisystem.com.br`)" ## mudar
+      - "traefik.http.routers.frontend.rule=Host(`portainer.techisystem.com.br`)"
       - "traefik.http.routers.frontend.entrypoints=websecure"
       - "traefik.http.services.frontend.loadbalancer.server.port=9000"
       - "traefik.http.routers.frontend.service=frontend"
       - "traefik.http.routers.frontend.tls.certresolver=leresolver"
 
       # Edge
-      - "traefik.http.routers.edge.rule=Host(`edge.techisystem.com.br`)" ## mudar
+      - "traefik.http.routers.edge.rule=Host(`edge.techisystem.com.br`)"
       - "traefik.http.routers.edge.entrypoints=websecure"
       - "traefik.http.services.edge.loadbalancer.server.port=8000"
       - "traefik.http.routers.edge.service=edge"
